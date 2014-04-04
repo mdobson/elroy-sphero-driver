@@ -20,10 +20,9 @@ SpheroDriver.prototype.setColor = function(rgb, cb) {
 };
 
 SpheroDriver.prototype.move = function(direction, time, cb) {
+  console.log(arguments);
   if(direction === 'forward') {
     this.sphero.forward(time);
-  } else if( direction === 'backward') {
-    this.sphero.backward(time);
   } else if( direction === 'left' ) {
     this.sphero.left().forward(time);
   } else if(direction === 'right' ) {
