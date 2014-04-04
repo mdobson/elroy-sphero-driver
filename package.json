@@ -1,0 +1,27 @@
+{
+  "name": "elroy-sphero-driver",
+  "version": "0.0.0",
+  "description": "Sphero Driver for Elroy",
+  "main": "sphero_scout.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdobson/elroy-sphero-driver.git"
+  },
+  "keywords": [
+    "elroy",
+    "sphero"
+  ],
+  "author": "Matthew S. Dobson <@mdobs>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdobson/elroy-sphero-driver/issues"
+  },
+  "homepage": "https://github.com/mdobson/elroy-sphero-driver",
+  "dependencies": {
+    "serialport": "^1.3.1",
+    "simple-sphero": "0.0.13"
+  }
+}
