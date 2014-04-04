@@ -8,7 +8,7 @@ var SpheroDriver = module.exports = function(sphero) {
 
 SpheroDriver.prototype.init = function(config) {
   config
-    .when('online', { allow: ['set-color','move'] }
+    .when('online', { allow: ['set-color','move'] })
     .when('moving', { allow: [] })
     .map('set-color', this.setColor, [{name: 'rgb', type: 'text'}])
     .map('move', this.move, [{name: 'direction', type: 'text'}, {name: 'time', type:'number'}]);
