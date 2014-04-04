@@ -11,7 +11,9 @@ SpheroDriver.prototype.init = function(config) {
     .when('online', { allow: ['set-color','move'] })
     .when('moving', { allow: [] })
     .map('set-color', this.setColor, [{name: 'rgb', type: 'text'}])
-    .map('move', this.move, [{name: 'direction', type: 'text'}, {name: 'time', type:'number'}]);
+    .map('move', this.move, [{name: 'time', type:'number'}])
+    .map('left', this.turnLeft)
+    .map('right', this.turnRight);
 };
 
 SpheroDriver.prototype.setColor = function(rgb, cb) {
@@ -28,5 +30,15 @@ SpheroDriver.prototype.move = function(direction, time, cb) {
   } else if(direction === 'right' ) {
     this.sphero.right().forward(time);
   }
+};
+
+SpheroDriver.prototype.turnLeft = function(cb) {
+  this.sphero.left();
+  cb();
+};
+
+SpheroDriver.prototype.turnRight = function(cb) {
+  this.sphero.right();
+  cb();
 };
 
