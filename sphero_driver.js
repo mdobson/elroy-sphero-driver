@@ -1,5 +1,5 @@
 var SpheroDriver = module.exports = function(sphero) {
-  this.name = 'Sphero';
+  this.name = 'Matts Sphero';
   this.type = 'Sphero';
   this.sphero = sphero;
   this.state = 'online';
