@@ -33,7 +33,9 @@ SpheroDriver.prototype.randomColor = function(cb) {
   var rand = Math.rand() * colors.length;
   this.color = colors[Math.floor(rand)];
   this.sphero.setColor(this.colors[colors[Math.floor(rand)]]);
-  cb();
+  if(cb) {
+    cb();
+  }
 };
 
 SpheroDriver.prototype.setColor = function(color, cb) {
@@ -41,21 +43,29 @@ SpheroDriver.prototype.setColor = function(color, cb) {
     this.sphero.setColor(rgb);
     this.color = rgb;
   }
-  cb();
+  if(cb) {
+    cb();
+  }
 };
 
 SpheroDriver.prototype.move = function(time, cb) {
   this.sphero.forward(time);
-  cb();
+  if(cb) {
+    cb();
+  }
 };
 
 SpheroDriver.prototype.turnLeft = function(cb) {
   this.sphero.left();
-  cb();
+  if(cb) {
+    cb();
+  }
 };
 
 SpheroDriver.prototype.turnRight = function(cb) {
   this.sphero.right();
-  cb();
+  if(cb) {
+    cb();
+  }
 };
 
