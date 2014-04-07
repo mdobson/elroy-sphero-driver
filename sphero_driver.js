@@ -25,16 +25,25 @@ SpheroDriver.prototype.init = function(config) {
     .map('move', this.move, [{name: 'time', type:'number'}])
     .map('random-color', this.randomColor)
     .map('left', this.turnLeft)
-    .map('right', this.turnRight);
+    .map('right', this.turnRight)
+    .stream('color', this.streamColor);
+};
+
+SpheroDriver.prototype.streamColor = function(emitter) {
+  this.emitter = emitter;
 };
 
 SpheroDriver.prototype.randomColor = function(cb) {
   var colors = ['black', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'white', 'yellow'];
-  var rand = Math.rand() * colors.length;
-  this.color = colors[Math.floor(rand)];
-  this.sphero.setColor(this.colors[colors[Math.floor(rand)]]);
+  var seed = Math.random() * colors.length;
+  this.color = colors[Math.floor(seed)];
+  this.sphero.setColor(this.colors[colors[Math.floor(seed)]]);
   if(cb) {
     cb();
+  }
+
+  if(this.emitter) {
+    this.emitter.emit('data', this.color);
   }
 };
 
@@ -45,6 +54,9 @@ SpheroDriver.prototype.setColor = function(color, cb) {
   }
   if(cb) {
     cb();
+  }
+  if(this.emitter) {
+    this.emitter.emit('data', this.color);
   }
 };
 
