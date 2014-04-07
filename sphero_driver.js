@@ -1,10 +1,10 @@
 var SpheroDriver = module.exports = function(sphero) {
   this.name = 'Matts Sphero';
   this.type = 'sphero';
-  this.sphero = sphero;
+  this._sphero = sphero;
   this.state = 'online';
   this.color = 'none';
-  this.colors = {
+  this._colors = {
     'black': 0x000000,
     'blue': 0x0000ff,
     'green': 0x00ff00,
