@@ -19,7 +19,7 @@ var SpheroDriver = module.exports = function(sphero) {
 
 SpheroDriver.prototype.init = function(config) {
   config
-    .when('online', { allow: ['set-color','move'] })
+    .when('online', { allow: ['set-color','move', 'left', 'right', 'random-color'] })
     .when('moving', { allow: [] })
     .map('set-color', this.setColor, [{name: 'color', type: 'text'}])
     .map('move', this.move, [{name: 'time', type:'number'}])
@@ -31,6 +31,7 @@ SpheroDriver.prototype.init = function(config) {
 SpheroDriver.prototype.randomColor = function(cb) {
   var colors = ['black', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'white', 'yellow'];
   var rand = Math.rand() * colors.length;
+  this.color = colors[Math.floor(rand)];
   this.sphero.setColor(this.colors[colors[Math.floor(rand)]]);
   cb();
 };
