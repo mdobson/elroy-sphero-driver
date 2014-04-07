@@ -23,8 +23,16 @@ SpheroDriver.prototype.init = function(config) {
     .when('moving', { allow: [] })
     .map('set-color', this.setColor, [{name: 'color', type: 'text'}])
     .map('move', this.move, [{name: 'time', type:'number'}])
+    .map('random-color', this.randomColor)
     .map('left', this.turnLeft)
     .map('right', this.turnRight);
+};
+
+SpheroDriver.prototype.randomColor = function(cb) {
+  var colors = ['black', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'white', 'yellow'];
+  var rand = Math.rand() * colors.length;
+  this.sphero.setColor(this.colors[colors[Math.floor(rand)]]);
+  cb();
 };
 
 SpheroDriver.prototype.setColor = function(color, cb) {
