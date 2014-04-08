@@ -1,6 +1,6 @@
 {
   "name": "elroy-sphero-driver",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Sphero Driver for Elroy",
   "main": "sphero_scout.js",
   "scripts": {
