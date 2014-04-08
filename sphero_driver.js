@@ -45,7 +45,7 @@ SpheroDriver.prototype.randomColor = function(cb) {
   var colorHex = this.colors[colors[Math.floor(seed)]];
   var colorBuf = new Buffer([colorHex]);
   colorBuf = '0x' + colorBuf.toString('hex');
-  this.sphero.setColor(colorHex);
+  this._sphero.setColor(colorHex);
   if(cb) {
     cb();
   }
@@ -64,7 +64,7 @@ SpheroDriver.prototype.setColor = function(color, cb) {
     var colorHex = this.colors[color];
     var colorBuf = new Buffer([colorHex]);
     colorBuf = '0x' + colorBuf.toString('hex');
-    this.sphero.setColor(colorHex);
+    this._sphero.setColor(colorHex);
     this.color = rgb;
   }
   if(cb) {
@@ -80,21 +80,21 @@ SpheroDriver.prototype.setColor = function(color, cb) {
 };
 
 SpheroDriver.prototype.move = function(time, cb) {
-  this.sphero.forward(time);
+  this._sphero.forward(time);
   if(cb) {
     cb();
   }
 };
 
 SpheroDriver.prototype.turnLeft = function(cb) {
-  this.sphero.left();
+  this._sphero.left();
   if(cb) {
     cb();
   }
 };
 
 SpheroDriver.prototype.turnRight = function(cb) {
-  this.sphero.right();
+  this._sphero.right();
   if(cb) {
     cb();
   }
