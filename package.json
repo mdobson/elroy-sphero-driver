@@ -1,6 +1,6 @@
 {
   "name": "zetta-sphero-driver",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Sphero Driver for Zetta",
   "main": "sphero_scout.js",
   "scripts": {
