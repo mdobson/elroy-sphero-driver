@@ -42,7 +42,7 @@ SpheroDriver.prototype.randomColor = function(cb) {
   var colors = ['black', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'white', 'yellow'];
   var seed = Math.random() * colors.length;
   this.color = colors[Math.floor(seed)];
-  var colorHex = this.colors[colors[Math.floor(seed)]];
+  var colorHex = this._colors[colors[Math.floor(seed)]];
   var colorBuf = new Buffer([colorHex]);
   colorBuf = '0x' + colorBuf.toString('hex');
   this._sphero.setColor(colorHex);
@@ -61,7 +61,7 @@ SpheroDriver.prototype.randomColor = function(cb) {
 
 SpheroDriver.prototype.setColor = function(color, cb) {
   if(color in this.colors) {
-    var colorHex = this.colors[color];
+    var colorHex = this._colors[color];
     var colorBuf = new Buffer([colorHex]);
     colorBuf = '0x' + colorBuf.toString('hex');
     this._sphero.setColor(colorHex);
