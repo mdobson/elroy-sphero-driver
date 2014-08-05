@@ -1,8 +1,8 @@
 {
   "name": "zetta-sphero-driver",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Sphero Driver for Zetta",
-  "main": "sphero_scout.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/zettajs/zetta-sphero-driver",
   "dependencies": {
-    "serialport": "^1.3.1",
+    "serialport": "^1.4.5",
     "simple-sphero": "0.0.13"
   }
 }
