@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/zettajs/zetta-sphero-driver",
   "dependencies": {
-    "serialport": "^1.4.5",
-    "simple-sphero": "0.0.13"
+    "serialport": "^1.4.0",
+    "simple-sphero": "0.0.13",
+    "zetta": "^0.1.0"
   }
 }
