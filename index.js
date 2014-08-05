@@ -4,14 +4,18 @@ var simpleSphero = require('simple-sphero');
 var serialport = require('serialport');
 var Sphero = require('./sphero');
 
-var SpheroScout = module.exports = function() {
+var SpheroScout = module.exports = function(port) {
   Scout.call(this);
-  this._foundPorts = [];
+  this.port = port;
 };
 util.inherits(SpheroScout, Scout);
 
 SpheroScout.prototype.init = function(cb){
-  this.searchPorts();
+  if (!this.port) {
+    this.searchPorts();
+  } else {
+    this.initDevice(this.port);
+  }
   cb();
 };
 
@@ -20,7 +24,7 @@ SpheroScout.prototype.searchPorts = function() {
   serialport.list(function(err, ports) {
     ports.forEach(function(port) {
       if(port.comName.search('Sphero') !== -1) {
-        self.initDevice(port);
+        self.initDevice(port.comName);
       }
     });
   });
@@ -29,7 +33,7 @@ SpheroScout.prototype.searchPorts = function() {
 SpheroScout.prototype.initDevice = function(port) {
   var self = this;
   var hubQuery = self.server.where({ type: 'sphero' });
-  var sphero = simpleSphero(port.comName);
+  var sphero = simpleSphero(port);
   sphero._sphero = require('simple-sphero').sphero;
   sphero.on('ready', function() {
     sphero._sphero.resetTimeout(true); // helps keep bluetooth from disconnecting

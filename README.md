@@ -21,6 +21,15 @@ zetta()
     console.log('Listening on http://localhost:3000/');
   });
 
+// or specify port
+
+zetta()
+  .expose('*')
+  .use(Sphero, '/dev/rfcomm0')
+  .listen(3000, function(err) {
+    console.log('Listening on http://localhost:3000/');
+  });
+
 ```
 
 ## License
